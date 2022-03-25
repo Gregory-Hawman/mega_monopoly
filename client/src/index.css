@@ -1,0 +1,46 @@
+@import-normalize;
+@tailwind base;
+@tailwind components;
+
+@layer components {
+    .full-board{
+        @apply 
+        bg-slate-800 text-white
+        w-full h-screen
+    }
+
+    .board{
+        @apply
+        w-[40rem] h-[40rem]
+        border-2 border-white rounded-sm 
+    }
+
+    .row-1{
+        @apply
+        flex flex-row-reverse order-last
+    }
+
+    .row-2{
+        @apply
+        flex order-first
+    }
+
+    .col-1{
+        @apply
+        flex flex-col-reverse
+    }
+
+    .col-2{
+        @apply
+        flex flex-col
+    }
+
+    .corner{
+        @apply
+        w-[5rem] h-[5rem]
+        border-[1px] border-white
+    }
+
+}
+
+@tailwind utilities;
