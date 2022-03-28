@@ -3,44 +3,113 @@
 @tailwind components;
 
 @layer components {
-    .full-board{
+    /* NAVBAR */
+    .navbar {
+        @apply
+        flex justify-between items-center
+        bg-slate-700
+        text-white
+        py-2
+    }
+
+    .navbar-logo {
+        @apply
+        w-[8rem] mx-5
+    }
+
+    .login-button {
+        @apply
+        flex justify-center items-center
+        w-[5rem] h-[2rem] mx-2
+        bg-white rounded-sm
+        text-black
+    }
+    /* NAVBAR */
+
+    /* MENU */
+    .menu {
+        @apply 
+        bg-slate-800 text-white
+        w-full h-screen
+        mt-[-0.5rem]
+    }
+
+    .menu-div {
+        @apply
+        flex justify-evenly
+        m-2
+    }
+
+    .menu-dash {
+        @apply
+        flex justify-center items-center
+        w-[100rem] h-[10rem] m-8
+        bg-white border-2 border-gray-300 rounded-lg
+        text-black text-[4rem]
+    }
+
+    .menu-link {
+        @apply
+        flex justify-center items-center
+        w-[20rem] h-[10rem] m-8
+        bg-white border-2 border-gray-300 rounded-lg
+        text-black text-[4rem]
+    }
+    /* MENU */
+
+    /* .full-board {
         @apply 
         bg-slate-800 text-white
         w-full h-screen
     }
 
-    .board{
+    .board {
         @apply
         w-[40rem] h-[40rem]
         border-2 border-white rounded-sm 
     }
 
-    .row-1{
-        @apply
-        flex flex-row-reverse order-last
-    }
-
-    .row-2{
-        @apply
-        flex order-first
-    }
-
-    .col-1{
-        @apply
-        flex flex-col-reverse
-    }
-
-    .col-2{
-        @apply
-        flex flex-col
-    }
-
-    .corner{
+    .corner {
         @apply
         w-[5rem] h-[5rem]
         border-[1px] border-white
-    }
-
+    } */
 }
 
 @tailwind utilities;
+
+
+/* DYNAMIC CLASS NAMES UNRECOGNIZED BY TAILWIND */
+
+/* TOKENS */
+.token-red {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 50%;
+}
+
+.token-yellow {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: yellow;
+    border: 1px solid yellow;
+    border-radius: 50%;
+}
+
+.token-green {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 50%;
+}
+
+.token-blue {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 50%;
+}

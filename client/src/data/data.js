@@ -1,120 +1,120 @@
 export const data = {
-    world: [
+    worlds: [
         {
             original: {
-                property_sets: {
-                    brown: {
-                        mediterranean_ave: {
+                property_sets: [
+                    { brown: [
+                        { mediterranean_ave: {
                             owner: 'bank',
                             cost: 60,
                             houses: 0,
                             hotel: false,
                             mortgaged: false
-                        },
-                        baltic_ave: {
+                        }},
+                        { baltic_ave: {
                             owner: 'bank',
                             cost: 60,
                             houses: 0,
                             hotel: false
-                        }
-                    },
-                    light_blue: {
-                        oriental_ave: {
+                        }}
+                    ]},
+                    { light_blue: [
+                        { oriental_ave: {
 
-                        },
-                        vermont_ave: {
+                        }},
+                        { vermont_ave: {
 
-                        },
-                        connecticut_ave: {
+                        }},
+                        { connecticut_ave: {
 
-                        }
-                    },
-                    pink: {
-                        st_charles_place: {
+                        }}
+                    ]},
+                    { pink: [
+                        { st_charles_place: {
 
-                        },
-                        states_ave: {
+                        }},
+                        { states_ave: {
 
-                        },
-                        virginia_ave: {
+                        }},
+                        { virginia_ave: {
 
-                        }
-                    },
-                    orange: {
-                        st_james_place: {
+                        }}
+                    ]},
+                    { orange: [
+                        { st_james_place: {
 
-                        },
-                        tennessee_ave: {
+                        }},
+                        { tennessee_ave: {
 
-                        },
-                        new_york_ave: {
+                        }},
+                        { new_york_ave: {
 
-                        }
-                    },
-                    red: {
-                        kentucky_ave: {
+                        }}
+                    ]},
+                    { red: [
+                        { kentucky_ave: {
 
-                        },
-                        indiana_ave: {
+                        }},
+                        { indiana_ave: {
 
-                        },
-                        illinois_ave: {
+                        }},
+                        { illinois_ave: {
 
-                        }
-                    },
-                    yellow: {
-                        atlantic_ave: {
+                        }}
+                    ]},
+                    { yellow: [
+                        { atlantic_ave: {
 
-                        },
-                        ventnor_ave: {
+                        }},
+                        { ventnor_ave: {
 
-                        },
-                        marvin_gardens: {
+                        }},
+                        { marvin_gardens: {
 
-                        }
-                    },
-                    green: {
-                        pacific_ave: {
+                        }}
+                    ]},
+                    { green: [
+                        { pacific_ave: {
 
-                        },
-                        north_carolina_ave: {
+                        }},
+                        { north_carolina_ave: {
 
-                        },
-                        pennsylvania_ave: {
+                        }},
+                        { pennsylvania_ave: {
 
-                        }
-                    },
-                    blue: {
-                        park_place: {
+                        }}
+                    ]},
+                    { blue: [
+                        { park_place: {
 
-                        },
-                        boardwalk: {
+                        }},
+                        { boardwalk: {
 
-                        }
-                    },
-                    railroads: {
-                        reading: {
+                        }}
+                    ]},
+                    { railroads: [
+                        { reading: {
 
-                        },
-                        pennsylvania: {
+                        }},
+                        { pennsylvania: {
 
-                        },
-                        b_n_o: {
+                        }},
+                        { b_n_o: {
 
-                        },
-                        short_line: {
+                        }},
+                        { short_line: {
 
-                        }
-                    },
-                    utilities: {
-                        electric_company: {
+                        }}
+                    ]},
+                    { utilities: [
+                        { electric_company: {
 
-                        },
-                        water_works: {
+                        }},
+                        { water_works: {
 
-                        }
-                    }
-                },
+                        }}
+                    ]}
+                ],
                 bank: {
                     houses: 32,
                     hotels: 12
@@ -123,17 +123,26 @@ export const data = {
         },
         {
             lord_of_the_rings: {
-
+                bank: {
+                    houses: 32,
+                    hotels: 12
+                }
             }
         },
         {
             star_wars: {
-
+                bank: {
+                    houses: 32,
+                    hotels: 12
+                }
             }
         },
         {
             the_beatles: {
-
+                bank: {
+                    houses: 32,
+                    hotels: 12
+                }
             }
         }
     ],
@@ -146,7 +155,8 @@ export const data = {
                 ],
                 cards: [
 
-                ]
+                ],
+                inJail: false
             }
         },
     ]
