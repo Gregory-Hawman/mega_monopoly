@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const Users = require('../models/usersModels');
+const Players = require('../models/playersModels');
 
 // === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === //
 // TEST 
@@ -10,14 +10,14 @@ const Users = require('../models/usersModels');
 
 // GET (READ)
 router.get('/', (req, res) => {
-    Users.findUser()
-    .then(users => {
-        console.log(users)
-        res.status(200).json({ users })
+    Players.findUser()
+    .then(Players => {
+        console.log(Players)
+        res.status(200).json({ Players })
     })
     .catch((error) => {
         res.status(500).json({
-            message: 'Users could not be retrieved',
+            message: 'Players could not be retrieved',
             error: error
         });
     });
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 // GET BY ID (READ ONE SPECIFICLY)
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    Users.findUserById(id)
+    Players.findUserById(id)
     .then(user => {
         res.status(200).json({user})
     })
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const newData = req.body;
-    Users.updateUser(id, newData)
+    Players.updateUser(id, newData)
     .then(saved => {
         res.status(200).json({
             saved: saved,
@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req,res) => {
     const { id } = req.params;
 
-    Users.deleteUser(id)
+    Players.deleteUser(id)
     .then(deleted => {
       if (deleted) {
         res.json({ 

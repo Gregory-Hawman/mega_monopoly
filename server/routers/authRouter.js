@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const { rounds } = require('../api/vars')
 
-const Users = require('../models/usersModels');
+const Players = require('../models/playersModels');
 const { generateToken } = require('../api/middleware');
 
 // === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === //
@@ -10,28 +10,28 @@ const { generateToken } = require('../api/middleware');
 // AUTH API TEST
 router.get('/', (req, res) => {
     res.json({
-        api: "(.get api/auth) brings you here, use /api/auth/register or /api/auth/login to register a new user or login in a user."
+        api: "(.get api/auth) brings you here, use /api/auth/register or /api/auth/login to register a new player or login in a player."
     })
 });
 
 // REGISTER (SIGN UP NEW USER)
 router.post('/register', (req, res) => {
-    const user = req.body;
-    const hash = bcrypt.hashSync(user.password, rounds);
-    user.password = hash;
+    const player = req.body;
+    const hash = bcrypt.hashSync(player.password, rounds);
+    player.password = hash;
 
-    Users.addUser(user)
-    .then(newUser => {
-        const token = generateToken(user);
+    Players.addUser(player)
+    .then(newPlayer => {
+        const token = generateToken(player);
         res.status(201).json({ 
             message: 'Successful Registration',
-            newUser: newUser,
+            newUser: newPlayer,
             token: token
         });
     })
     .catch(error => {
         console.log(error);
-        res.status(500).json({ message: 'Server Error occured during registering', error });
+        res.status(500).json({ message: 'Server Error occurred during registering', error });
     });
 });
 
@@ -39,13 +39,13 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     let { username, email, password } = req.body;
 
-    Users.findUserBy({ username })
-         .then(([user]) => {
-            if (user && bcrypt.compareSync(password, user.password)) {
-                const token = generateToken(user);
+    Players.findUserBy({ username })
+         .then(([player]) => {
+            if (user && bcrypt.compareSync(password, player.password)) {
+                const token = generateToken(player);
                 res.status(200).json({ 
-                    message: `Welcome ${user.username}!`,
-                    user: user,
+                    message: `Welcome ${player.username}!`,
+                    user: player,
                     token: token, 
                 });
             } else {
