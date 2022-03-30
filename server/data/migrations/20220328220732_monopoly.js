@@ -1,57 +1,24 @@
 exports.up = function(knex) {
     return knex.schema
         .createTable('games', tbl => {
-            tbl.increments('id'); // World ID
-            tbl.integer('players_turn');
-            tbl.timestamp('created_at').defaultTo(knex.fn.now());
-            tbl.timestamp('updated_at').defaultTo(knex.fn.now());
-        })
-
-        .createTable('games_economies', tbl => {
             tbl.increments('id');
-            tbl.integer('world_1_ratio');
-            tbl.integer('world_2_ratio');
-            tbl.integer('world_3_ratio');
-            tbl.integer('world_4_ratio');
-            tbl
-                .integer("games_id")
-                .references("id")
-                .inTable("games")
-                .unsigned()
-                .unique()
-                .notNullable()
-                .onUpdate("CASCADE")
-                .onDelete("RESTRICT");
+            tbl.integer('players_turn');
+            tbl.integer('econ_turns_left');
             tbl.timestamp('created_at').defaultTo(knex.fn.now());
             tbl.timestamp('updated_at').defaultTo(knex.fn.now());
         })
 
         .createTable('worlds', tbl => {
             tbl.increments('id');
-            tbl.string('worlds_name').unique();
-            tbl.integer('worlds_order_number')
+            tbl.string('world_name').notNullable();
+            tbl.integer('world_order');
+            tbl.integer('world_econ');
+            tbl.integer('houses_left').defaultTo(32);
+            tbl.integer('hotels_left').defaultTo(12);
             tbl
                 .integer("games_id")
                 .references("id")
                 .inTable("games")
-                .unsigned()
-                .notNullable()
-                .onUpdate("CASCADE")
-                .onDelete("RESTRICT");
-            tbl.timestamp('created_at').defaultTo(knex.fn.now());
-            tbl.timestamp('updated_at').defaultTo(knex.fn.now());
-        })
-
-        .createTable('worlds_banks', tbl => {
-            tbl.increments('id');
-            tbl.integer('houses');
-            tbl.integer('hotels');
-            tbl
-                .integer("worlds_id")
-                .references("id")
-                .inTable("worlds")
-                .unsigned()
-                .notNullable()
                 .onUpdate("CASCADE")
                 .onDelete("RESTRICT");
             tbl.timestamp('created_at').defaultTo(knex.fn.now());
@@ -63,17 +30,23 @@ exports.up = function(knex) {
             tbl.string('username', 255).notNullable().unique();
             tbl.string('email', 255).notNullable().unique();
             tbl.string('password', 255).notNullable();
-            tbl.integer('players_order_number');
-            tbl.integer('location', 160)
+            tbl.integer('players_order');
+            tbl.integer('location', 160);
+            tbl
+                .integer('games_id')
+                .references('id')
+                .inTable('games')
+                .onUpdate('CASCADE')
+                .onDelete('RESTRICT');
             tbl.timestamp('created_at').defaultTo(knex.fn.now());
             tbl.timestamp('updated_at').defaultTo(knex.fn.now());
         })
 
-        .createTable('players_worlds_inventory', tbl => {
+        .createTable('inventories', tbl => {
             tbl.increments('id');
-            tbl.integer('worlds_money');
-            tbl.integer('worlds_cards');
-            tbl.boolean('worlds_in_jail');
+            tbl.integer('money');
+            tbl.integer('cards');
+            tbl.boolean('in_jail');
             tbl
                 .integer('players_id')
                 .references('id')
@@ -81,7 +54,7 @@ exports.up = function(knex) {
                 .unsigned()
                 .notNullable()
                 .onUpdate('CASCADE')
-                .onDelete('RESTRICT');
+                .onDelete('CASCADE');
             tbl
                 .integer('worlds_id')
                 .references('id')
@@ -89,12 +62,12 @@ exports.up = function(knex) {
                 .unsigned()
                 .notNullable()
                 .onUpdate('CASCADE')
-                .onDelete('RESTRICT');
+                .onDelete('CASCADE');
             tbl.timestamp('created_at').defaultTo(knex.fn.now());
             tbl.timestamp('updated_at').defaultTo(knex.fn.now());
         })
 
-        .createTable('players_worlds_properties', tbl => {
+        .createTable('properties', tbl => {
             tbl.increments('id');
             tbl.string('set');
             tbl.string('name');
@@ -106,7 +79,6 @@ exports.up = function(knex) {
                 .references('id')
                 .inTable('players')
                 .unsigned()
-                .notNullable()
                 .onUpdate('CASCADE')
                 .onDelete('RESTRICT');
             tbl
@@ -116,17 +88,15 @@ exports.up = function(knex) {
                 .unsigned()
                 .notNullable()
                 .onUpdate('CASCADE')
-                .onDelete('RESTRICT');
+                .onDelete('CASCADE');
         })
     };
 
 exports.down = function(knex) {
     return knex.schema
         .dropTableIfExists("games")
-        .dropTableIfExists("games_economies")
         .dropTableIfExists("worlds")
-        .dropTableIfExists("worlds_banks")
         .dropTableIfExists('players')
-        .dropTableIfExists('players_worlds_inventory')
-        .dropTableIfExists('players_worlds_properties');
+        .dropTableIfExists('inventory')
+        .dropTableIfExists('properties');
 };

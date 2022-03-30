@@ -1,9 +1,9 @@
 exports.seed = function(knex) {
     // Deletes ALL existing entries
-    return knex('players_worlds_inventory').truncate()
+    return knex('inventory').truncate()
         .then(function () {
         // Inserts seed entries
-            return knex('players_worlds_inventory').insert([
+            return knex('inventory').insert([
                 {
                     id: 1,
                     worlds_money: 1500,

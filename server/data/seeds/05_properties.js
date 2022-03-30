@@ -1,9 +1,9 @@
 exports.seed = function(knex) {
     // Deletes ALL existing entries
-    return knex('players_worlds_properties').truncate()
+    return knex('properties').truncate()
         .then(function () {
         // Inserts seed entries
-            return knex('players_worlds_properties').insert([
+            return knex('properties').insert([
                 {
                     id: 1,
                     set: 'brown',
