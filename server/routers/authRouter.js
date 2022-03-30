@@ -20,12 +20,12 @@ router.post('/register', (req, res) => {
     const hash = bcrypt.hashSync(player.password, rounds);
     player.password = hash;
 
-    Players.addUser(player)
+    Players.addPlayer(player)
     .then(newPlayer => {
         const token = generateToken(player);
         res.status(201).json({ 
             message: 'Successful Registration',
-            newUser: newPlayer,
+            newPlayer: newPlayer,
             token: token
         });
     })
@@ -39,13 +39,13 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     let { username, email, password } = req.body;
 
-    Players.findUserBy({ username })
+    Players.findPlayerBy({ username })
          .then(([player]) => {
-            if (user && bcrypt.compareSync(password, player.password)) {
+            if (player && bcrypt.compareSync(password, player.password)) {
                 const token = generateToken(player);
                 res.status(200).json({ 
                     message: `Welcome ${player.username}!`,
-                    user: player,
+                    player: player,
                     token: token, 
                 });
             } else {
