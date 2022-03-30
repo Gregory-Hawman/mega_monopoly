@@ -1,22 +1,22 @@
 const router = require('express').Router();
-const Players = require('../models/playersModels');
+const Worlds = require('../models/worldsModels');
 
 // === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === //
 // TEST 
 // router.get('/', (req, res) => {
-//     res.status(200).json({ message: 'Player routing is working' })
+//     res.status(200).json({ message: 'World routing is working' })
 // });
 
 // GET (READ)
 router.get('/', (req, res) => {
-    Players.findPlayers()
-    .then(Players => {
-        console.log(Players)
-        res.status(200).json({ Players })
+    Worlds.findWorlds()
+    .then(Worlds => {
+        console.log(Worlds)
+        res.status(200).json({ Worlds })
     })
     .catch((error) => {
         res.status(500).json({
-            message: 'Players could not be retrieved',
+            message: 'Worlds could not be retrieved',
             error: error
         });
     });
@@ -25,13 +25,13 @@ router.get('/', (req, res) => {
 // GET BY ID (READ ONE SPECIFICLY)
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    Players.findPlayerById(id)
-    .then(player => {
-        res.status(200).json({player})
+    Worlds.findWorldById(id)
+    .then(world => {
+        res.status(200).json({world})
     })
     .catch((error) => {
         res.status(500).json({ 
-            message: 'Player could not be retrieved', 
+            message: 'World could not be retrieved', 
             error: error 
         });
     });
@@ -42,7 +42,7 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const newData = req.body;
-    Players.updatePlayer(id, newData)
+    Worlds.updateWorld(id, newData)
     .then(saved => {
         res.status(200).json({
             saved: saved,
@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
     })
     .catch((error) => {
         res.status(500).json({ 
-            message: 'Player data could not be updated', 
+            message: 'World data could not be updated', 
             error: error 
         });
     });
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req,res) => {
     const { id } = req.params;
 
-    Players.deletePlayer(id)
+    Worlds.deleteWorld(id)
     .then(deleted => {
       if (deleted) {
         res.json({ 
@@ -70,12 +70,12 @@ router.delete('/:id', (req,res) => {
         });
       } else {
         res.status(404).json({ 
-            message: 'Could not find Player with given id' 
+            message: 'Could not find World with given id' 
         });
       }
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to delete Player', err });
+      res.status(500).json({ message: 'Failed to delete World', err });
     });
 });
 

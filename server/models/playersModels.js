@@ -2,14 +2,14 @@ const db = require('../data/dbConfig,js');
 
 module.exports = {
     addPlayer,
-    findPlayer,
+    findPlayers,
     findPlayerBy,
     findPlayerById,
     updatePlayer,
     deletePlayer
 }
 
-function findPlayer() {
+function findPlayers() {
     return db('players').select('id', 'username', 'email', 'password');
 };
 

@@ -1,22 +1,22 @@
 const router = require('express').Router();
-const Players = require('../models/playersModels');
+const Games = require('../models/gamesModels');
 
 // === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === //
 // TEST 
 // router.get('/', (req, res) => {
-//     res.status(200).json({ message: 'Player routing is working' })
+//     res.status(200).json({ message: 'Game routing is working' })
 // });
 
 // GET (READ)
 router.get('/', (req, res) => {
-    Players.findPlayers()
-    .then(Players => {
-        console.log(Players)
-        res.status(200).json({ Players })
+    Games.findGames()
+    .then(Games => {
+        console.log(Games)
+        res.status(200).json({ Games })
     })
     .catch((error) => {
         res.status(500).json({
-            message: 'Players could not be retrieved',
+            message: 'Games could not be retrieved',
             error: error
         });
     });
@@ -25,13 +25,13 @@ router.get('/', (req, res) => {
 // GET BY ID (READ ONE SPECIFICLY)
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    Players.findPlayerById(id)
-    .then(player => {
-        res.status(200).json({player})
+    Games.findGameById(id)
+    .then(game => {
+        res.status(200).json({game})
     })
     .catch((error) => {
         res.status(500).json({ 
-            message: 'Player could not be retrieved', 
+            message: 'Game could not be retrieved', 
             error: error 
         });
     });
@@ -42,7 +42,7 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const newData = req.body;
-    Players.updatePlayer(id, newData)
+    Games.updateGame(id, newData)
     .then(saved => {
         res.status(200).json({
             saved: saved,
@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
     })
     .catch((error) => {
         res.status(500).json({ 
-            message: 'Player data could not be updated', 
+            message: 'Game data could not be updated', 
             error: error 
         });
     });
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req,res) => {
     const { id } = req.params;
 
-    Players.deletePlayer(id)
+    Games.deleteGame(id)
     .then(deleted => {
       if (deleted) {
         res.json({ 
@@ -70,12 +70,12 @@ router.delete('/:id', (req,res) => {
         });
       } else {
         res.status(404).json({ 
-            message: 'Could not find Player with given id' 
+            message: 'Could not find Game with given id' 
         });
       }
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to delete Player', err });
+      res.status(500).json({ message: 'Failed to delete Game', err });
     });
 });
 
