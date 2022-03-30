@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function findGames() {
-    return db('game').select('id', 'created_at', 'updated_at')
+    return db('games').select('id', 'players_turn', 'econ_turns_left', 'created_at', 'updated_at')
 };
 
 function findGameBy(filter) {

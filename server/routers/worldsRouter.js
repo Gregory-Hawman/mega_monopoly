@@ -37,8 +37,29 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// GET Worlds by Game ID 
 
-// PUT (UPDATE)
+// GET Worlds by Game ID 
+
+// POST New World
+router.post('/', (req, res) => {
+    const world = req.body
+    Worlds.addWorld(world)
+    .then((newWorld) => {
+        res.status(201).json({
+            message: 'Successful world creation',
+            newGame: newWorld
+        });
+    })
+    .catch((error) => {
+        res.status(500).json({ 
+            message: 'World data could not be updated', 
+            error: error 
+        });
+    });
+});
+
+// PUT (UPDATE) World
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const newData = req.body;

@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function findWorlds() {
-    return db('world').select('id', 'created_at', 'updated_at')
+    return db('worlds').select('id', 'world_name', 'world_order', 'world_econ', 'houses_left', 'hotels_left', 'games_id', 'created_at', 'updated_at')
 };
 
 function findWorldBy(filter) {

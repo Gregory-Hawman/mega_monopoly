@@ -6,7 +6,8 @@ exports.seed = function(knex) {
             return knex('games').insert([
                 {
                     id: 1,
-                    players_turn: 1
+                    players_turn: 1,
+                    econ_turns_left: 1
                 }
             ]);
         });

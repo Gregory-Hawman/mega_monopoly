@@ -37,6 +37,23 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+    const property = req.body
+    Properties.addProperty(property)
+    .then((newProperty) => {
+        res.status(201).json({
+            message: 'Successful game creation',
+            newProperty: newProperty
+        });
+    })
+    .catch((error) => {
+        res.status(500).json({ 
+            message: 'Property data could not be updated', 
+            error: error 
+        });
+    });
+});
+
 
 // PUT (UPDATE)
 router.put('/:id', (req, res) => {

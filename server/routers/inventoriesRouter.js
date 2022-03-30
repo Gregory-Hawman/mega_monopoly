@@ -37,6 +37,23 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+    const inventory = req.body
+    Inventories.addInventory(inventory)
+    .then((newInventory) => {
+        res.status(201).json({
+            message: 'Successful game creation',
+            newInventory: newInventory
+        });
+    })
+    .catch((error) => {
+        res.status(500).json({ 
+            message: 'Inventory data could not be updated', 
+            error: error 
+        });
+    });
+});
+
 
 // PUT (UPDATE)
 router.put('/:id', (req, res) => {

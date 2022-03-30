@@ -17,11 +17,11 @@ server.use(express.json());
 server.use(cors());
 
 server.use('/api/auth', authRouter);
-server.use('api/games', authenticate, gamesRouter);
-server.use('api/worlds', authenticate, worldsRouter);
+server.use('/api/games', authenticate, gamesRouter);
+server.use('/api/worlds', authenticate, worldsRouter);
 server.use('/api/players', authenticate, playersRouter);
-server.use('api/inventories', authenticate, inventoriesRouter);
-server.use('api/properties', authenticate, propertiesRouter);
+server.use('/api/inventories', authenticate, inventoriesRouter);
+server.use('/api/properties', authenticate, propertiesRouter);
 
 server.get("/", (req, res) => {
     res.json({ api: "server up" });

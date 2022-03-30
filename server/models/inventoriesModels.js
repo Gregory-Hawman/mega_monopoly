@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function findInventories() {
-    return db('inventory').select('id', 'money', 'cards', 'in_jail', 'players_id', 'worlds_id')
+    return db('inventories').select('id', 'money', 'cards', 'in_jail', 'players_id', 'worlds_id')
 };
 
 function findInventoryBy(filter) {

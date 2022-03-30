@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function findProperties() {
-    return db('game').select('id', 'set', 'name', 'houses', 'hotel', 'mortgaged', 'players_id', 'worlds_id')
+    return db('properties').select('id', 'set', 'name', 'houses', 'hotel', 'mortgaged', 'players_id', 'worlds_id')
 };
 
 function findPropertyBy(filter) {

@@ -44,9 +44,9 @@ exports.up = function(knex) {
 
         .createTable('inventories', tbl => {
             tbl.increments('id');
-            tbl.integer('money');
-            tbl.integer('cards');
-            tbl.boolean('in_jail');
+            tbl.integer('money').defaultTo(1500);
+            tbl.integer('cards').defaultTo(0);
+            tbl.boolean('in_jail').defaultTo(false);
             tbl
                 .integer('players_id')
                 .references('id')
@@ -60,7 +60,7 @@ exports.up = function(knex) {
                 .references('id')
                 .inTable('worlds')
                 .unsigned()
-                .notNullable()
+                .notNullable() // Should this be if worlds not yet decided
                 .onUpdate('CASCADE')
                 .onDelete('CASCADE');
             tbl.timestamp('created_at').defaultTo(knex.fn.now());
@@ -69,11 +69,11 @@ exports.up = function(knex) {
 
         .createTable('properties', tbl => {
             tbl.increments('id');
-            tbl.string('set');
-            tbl.string('name');
-            tbl.integer('houses');
-            tbl.boolean('hotel');
-            tbl.boolean('mortgaged');
+            tbl.string('set').notNullable();
+            tbl.string('name').notNullable();
+            tbl.integer('houses').defaultTo(0);
+            tbl.boolean('hotel').defaultTo(0);
+            tbl.boolean('mortgaged').defaultTo(false);
             tbl
                 .integer('players_id')
                 .references('id')

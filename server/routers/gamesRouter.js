@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Games = require('../models/gamesModels');
 
-// === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === USER ROUTERS === //
+// === GAMES ROUTERS === GAMES ROUTERS === GAMES ROUTERS === GAMES ROUTERS === GAMES ROUTERS === GAMES ROUTERS === //
 // TEST 
 // router.get('/', (req, res) => {
 //     res.status(200).json({ message: 'Game routing is working' })
@@ -32,6 +32,23 @@ router.get('/:id', (req, res) => {
     .catch((error) => {
         res.status(500).json({ 
             message: 'Game could not be retrieved', 
+            error: error 
+        });
+    });
+});
+
+router.post('/', (req, res) => {
+    const game = req.body
+    Games.addGame(game)
+    .then((newGame) => {
+        res.status(201).json({
+            message: 'Successful game creation',
+            newGame: newGame
+        });
+    })
+    .catch((error) => {
+        res.status(500).json({ 
+            message: 'Game data could not be updated', 
             error: error 
         });
     });

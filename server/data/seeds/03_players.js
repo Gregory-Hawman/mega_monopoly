@@ -17,32 +17,36 @@ return knex('players').truncate()
                 username: 'Test123', 
                 email: 'test123@email.com', 
                 password: password_1,
-                players_order_number: 1,
-                location: 0
+                players_order: 1,
+                location: 0,
+                games_id: 1
             },
             { 
                 id: 2, 
                 username: 'Test456', 
                 email: 'test456@email.com', 
                 password: password_2,
-                players_order_number: 2,
-                location: 0
+                players_order: 2,
+                location: 0,
+                games_id: 1
             },
             { 
                 id: 3, 
                 username: 'Test789', 
                 email: 'test789@email.com', 
                 password: password_3,
-                players_order_number: 3,
-                location: 0
+                players_order: 3,
+                location: 0,
+                games_id: 1
             },
             { 
                 id: 4, 
                 username: 'Test007', 
                 email: 'test007@email.com', 
                 password: password_4,
-                players_order_number: 4, 
-                location: 0
+                players_order: 4, 
+                location: 0,
+                games_id: 1
             }
         ]);
     });
