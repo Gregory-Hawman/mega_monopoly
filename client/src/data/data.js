@@ -3,21 +3,29 @@ export const data = {
         {
             original: {
                 property_sets: [
-                    { brown: [
-                        { mediterranean_ave: {
-                            owner: 'bank',
-                            cost: 60,
-                            houses: 0,
-                            hotel: false,
-                            mortgaged: false
-                        }},
-                        { baltic_ave: {
-                            owner: 'bank',
-                            cost: 60,
-                            houses: 0,
-                            hotel: false
-                        }}
-                    ]},
+                    { 
+                        brown: [
+                            {   
+                                mediterranean_ave: {
+                                    owner: 'bank',
+                                    cost: 60,
+                                    houses: 0,
+                                    hotel: false,
+                                    mortgaged: false
+                                }
+                            },
+                            {
+                                baltic_ave: {
+                                    owner: 'bank',
+                                    cost: 60,
+                                    houses: 0,
+                                    hotel: false
+                                }
+                            },
+                        
+                        ],
+                        allOwned: false
+                    },
                     { light_blue: [
                         { oriental_ave: {
 
