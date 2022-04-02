@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 // REGISTER (SIGN UP NEW USER)
 router.post('/register', (req, res) => {
     const player = req.body;
+    console.log(player);
     const hash = bcrypt.hashSync(player.password, rounds);
     player.password = hash;
 
@@ -37,10 +38,11 @@ router.post('/register', (req, res) => {
 
 // LOGIN 
 router.post('/login', (req, res) => {
-    let { username, email, password } = req.body;
+    const { email, password } = req.body;
 
-    Players.findPlayerBy({ username })
-         .then(([player]) => {
+    Players.findPlayerBy(email)
+        .then((player) => {
+            const check = bcrypt.compareSync(password, player.password)
             if (player && bcrypt.compareSync(password, player.password)) {
                 const token = generateToken(player);
                 res.status(200).json({ 

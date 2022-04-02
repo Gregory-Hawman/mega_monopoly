@@ -37,6 +37,20 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// router.get('/filter', (req, res) => {
+//     const { email, password } = req.body;
+//     Players.findPlayerBy(email)
+//     .then(player => {
+//         res.status(200).json({player})
+//     })
+//     .catch((error) => {
+//         res.status(500).json({ 
+//             message: 'Player could not be retrieved', 
+//             error: error 
+//         });
+//     });
+// });
+
 
 // PUT (UPDATE)
 router.put('/:id', (req, res) => {

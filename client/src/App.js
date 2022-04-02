@@ -1,25 +1,64 @@
-import Menu from "./components/Menu";
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Dashboard from './components/Dashboard';
-import Players from './components/Players';
-import Banks from './components/Banks';
-import Boards from './components/Boards';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Menu from "./components/page/Menu";
+import Navbar from './components/page/Navbar';
+import Dashboard from './components/page/Dashboard';
+import Players from './components/game/Players';
+import Banks from './components/game/Banks';
+import Boards from './components/game/Boards';
+import Login from './components/page/Login';
+import Signup from './components/page/Signup';
+import PrivateRoute from './utilities/PrivateRoute';
+import PublicPage from "./components/page/PublicPage";
 
 function App() {
   return (
-    <div className="bg-slate-500">
+    <div className="app">
       <Navbar />
       <Routes>
-        <Route path='/' element={ <Menu /> } />
-        <Route path='/dashboard' element={ <Dashboard /> } />
-        <Route path='/players' element={ <Players /> } />
-        <Route path='/banks' element={ <Banks /> } />
-        <Route path='/boards' element={ <Boards /> } />
+        <Route path='/' element={ <PublicPage/> } />
         <Route path='/login' element={ <Login /> } />
         <Route path='/signup' element={ <Signup /> } />
+        <Route 
+          path='/menu' 
+          element={
+            <PrivateRoute>
+              <Menu /> 
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+        path='/dashboard' 
+        element={
+          <PrivateRoute>
+            <Dashboard /> 
+          </PrivateRoute> 
+        } 
+        />
+        <Route 
+        path='/players' 
+        element={ 
+          <PrivateRoute>
+            <Players /> 
+          </PrivateRoute>
+        }
+        />
+        <Route 
+        path='/banks' 
+        element={ 
+          <PrivateRoute>
+            <Banks /> 
+          </PrivateRoute>
+        } 
+        />
+        <Route 
+        path='/boards' 
+        element={ 
+          <PrivateRoute>
+            <Boards /> 
+          </PrivateRoute>
+        } 
+        />
+        <Route path="*" element={() => "404 Page Not Found"} />
       </Routes>
     </div>
   );

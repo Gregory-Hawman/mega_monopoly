@@ -3,6 +3,14 @@
 @tailwind components;
 
 @layer components {
+    /* APP */
+    .app {
+        @apply
+        h-screen
+        bg-slate-500
+    }
+    /* APP */
+
     /* NAVBAR */
     .navbar {
         @apply
@@ -26,11 +34,59 @@
     }
     /* NAVBAR */
 
+    /* WELCOME PAGE / LOGIN / SIGN-UP */
+    .welcome {
+        @apply
+        flex flex-col items-center
+        overflow-hidden
+    }
+
+    .welcome-title {
+        @apply
+        text-[6rem] text-white
+        mt-[1rem] mb-[2.5rem]
+    }
+
+    .welcome-card {
+        @apply
+        border-2 border-white bg-white rounded-md
+        w-[25rem] h-[25rem]
+        text-2xl
+        mx-4
+    }
+
+    .inner-welcome-card {
+        @apply
+        border-[1px] border-black 
+        h-[93%] m-4
+    }
+
+    .title-deed {
+        @apply
+        flex flex-col items-center
+        border-[1px] border-black 
+        m-3 p-2
+        text-white font-bold
+    }
+
+    .login-signup {
+        @apply
+        flex justify-center 
+        pt-[10rem]
+    }
+
+    .inputs {
+        @apply
+        hover:bg-slate-200 rounded-lg
+        px-2
+    }
+    /* WELCOME PAGE / LOGIN / SIGN-UP */
+
     /* MENU */
     .menu {
         @apply 
         bg-slate-800 text-white
-        w-full h-screen
+        w-full
         mt-[-0.5rem]
     }
 

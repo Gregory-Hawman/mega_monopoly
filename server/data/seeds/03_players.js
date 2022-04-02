@@ -19,7 +19,6 @@ return knex('players').truncate()
                 password: password_1,
                 players_order: 1,
                 location: 0,
-                games_id: 1
             },
             { 
                 id: 2, 
@@ -28,7 +27,6 @@ return knex('players').truncate()
                 password: password_2,
                 players_order: 2,
                 location: 0,
-                games_id: 1
             },
             { 
                 id: 3, 
@@ -37,7 +35,6 @@ return knex('players').truncate()
                 password: password_3,
                 players_order: 3,
                 location: 0,
-                games_id: 1
             },
             { 
                 id: 4, 
@@ -46,7 +43,6 @@ return knex('players').truncate()
                 password: password_4,
                 players_order: 4, 
                 location: 0,
-                games_id: 1
             }
         ]);
     });

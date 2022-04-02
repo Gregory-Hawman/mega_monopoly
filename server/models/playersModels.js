@@ -13,17 +13,17 @@ function findPlayers() {
     return db('players').select('id', 'username', 'email', 'password');
 };
 
-function findPlayerBy(filter) {
-    return db('players').where(filter);
+function findPlayerBy(email) {
+    return db('players').where({ email }).first();
+};
+
+function findPlayerById(id) {
+    return db('players').where({ id }).first();
 };
 
 async function addPlayer(player) {
     const [id] = await db('players').insert(player, 'id');
     return findPlayerById(id);
-};
-
-function findPlayerById(id) {
-    return db('players').where({ id }).first();
 };
 
 function updatePlayer(id, newData) {

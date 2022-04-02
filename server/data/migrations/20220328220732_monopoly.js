@@ -32,14 +32,14 @@ exports.up = function(knex) {
             tbl.string('password', 255).notNullable();
             tbl.integer('players_order');
             tbl.integer('location', 160);
-            tbl
-                .integer('games_id')
-                .references('id')
-                .inTable('games')
-                .onUpdate('CASCADE')
-                .onDelete('RESTRICT');
             tbl.timestamp('created_at').defaultTo(knex.fn.now());
             tbl.timestamp('updated_at').defaultTo(knex.fn.now());
+        })
+
+        .createTable('games-players', tbl => {
+            tbl.increments();
+            tbl.integer('games_id');
+            tbl.integer('players_id');
         })
 
         .createTable('inventories', tbl => {
@@ -94,9 +94,10 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
     return knex.schema
-        .dropTableIfExists("games")
-        .dropTableIfExists("worlds")
-        .dropTableIfExists('players')
-        .dropTableIfExists('inventory')
-        .dropTableIfExists('properties');
+    .dropTableIfExists('properties')
+    .dropTableIfExists('inventories')
+    .dropTableIfExists('games-players')
+    .dropTableIfExists('players')
+    .dropTableIfExists("worlds")
+    .dropTableIfExists("games");
 };

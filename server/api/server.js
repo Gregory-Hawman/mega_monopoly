@@ -27,4 +27,8 @@ server.get("/", (req, res) => {
     res.json({ api: "server up" });
 });
   
+server.use(function(req, res) {
+    res.status(404).send('Page does not exist')
+});
+
 module.exports = server;
