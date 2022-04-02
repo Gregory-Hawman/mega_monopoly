@@ -14,6 +14,8 @@ function authenticate (req, res, next) {
                 })
             } else {
                 req.decodedToken = decodedToken
+                req.token = decodedToken
+                console.log(req.token)
                 next();
             }
         })
