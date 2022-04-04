@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const { authenticate } = require('./middleware/auth_middleware');
+const checkUser = require('./middleware/check_users');
 const authRouter = require('./routers/authRouter');
 const gamesRouter = require('./routers/gamesRouter');
 const worldsRouter = require('./routers/worldsRouter');

@@ -22,6 +22,10 @@ router.get('/', (req, res) => {
     });
 }); 
 
+router.get('/locals', (req, res) => {
+    console.log(res.locals)
+})
+
 // GET BY ID (READ ONE SPECIFICLY)
 router.get('/:id', (req, res) => {
     const { id } = req.params;
