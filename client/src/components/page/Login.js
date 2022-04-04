@@ -16,7 +16,7 @@ export default function Login() {
       .post('http://localhost:5000/api/auth/login', input)
       .then((res) => {
         localStorage.setItem('token', res.data.token);
-        navigate('/dashboard');
+        navigate('/menu');
         setInput({ email: '', password: '' });
       })
       .catch(error => console.log("ERROR", error));
