@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const { rounds } = require('../api/vars')
+const { rounds } = require('../vars')
 
 const Players = require('../models/playersModels');
-const { generateToken } = require('../api/middleware');
+const { generateToken } = require('../middleware/auth_middleware');
 
 // === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === AUTH ROUTER === //
 
@@ -42,7 +42,6 @@ router.post('/login', (req, res) => {
 
     Players.findPlayerBy(email)
         .then((player) => {
-            const check = bcrypt.compareSync(password, player.password)
             if (player && bcrypt.compareSync(password, player.password)) {
                 const token = generateToken(player);
                 res.status(200).json({ 
