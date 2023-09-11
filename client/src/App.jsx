@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import Menu from "./components/page/Menu";
-import Navbar from './components/page/Navbar';
-import PlayerProfile from './components/page/PlayerProfile';
-import Games from './components/page/Games';
-import Worlds from './components/page/Worlds';
-import Players from './components/game/Players';
-import Banks from './components/game/Banks';
-import Boards from './components/game/Boards';
-import Login from './components/page/Login';
-import Signup from './components/page/Signup';
+import Menu from "./components/website_comps/Menu";
+import Navbar from './components/website_comps/Navbar';
+import PlayerProfile from './components/website_comps/PlayerProfile';
+import Games from './components/website_comps/Games';
+import Worlds from './components/website_comps/Worlds';
+import Players from './components/in-game_comps/Players';
+import Banks from './components/in-game_comps/Banks';
+import Boards from './components/in-game_comps/Boards';
+import Login from './components/website_comps/Login';
+import Signup from './components/website_comps/Signup';
 import PrivateRoute from './utilities/PrivateRoute';
-import PublicPage from "./components/page/PublicPage";
+import PublicPage from "./components/website_comps/PublicPage";
 
 function App() {
   return (

@@ -1,0 +1,78 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .board {
+    display: flex;
+  }
+  
+  .square {
+    border: 1px solid black;
+    width: 4rem;
+    height: 6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .one {
+    background-color: red;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+  }
+  
+  .two {
+    background-color: green;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+  }
+  
+  .three {
+    background-color: blue;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+  }
+  
+  .four {
+    background-color: yellow;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+  }
+  
+  .diceBlock {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .dieFace {
+    border: 1px solid black;
+    width: 7rem;
+    height: 7rem;
+    margin: 1rem;
+  }
+  
+  .dieFace h3 {
+    font-size: 6rem;
+    margin-top: 0.15rem;
+  }
+  
+  .rollButton {
+    margin: 1rem auto;
+    padding: 0.5rem;
+    width: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .doublesPlace {
+    margin: 1.15rem auto;
+  }
+  
